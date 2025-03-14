@@ -1,0 +1,132 @@
+/* Menu.module.scss */
+
+.container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .subTitle{
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  /* Category List */
+  .categoryList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  .categoryItem {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+  }
+  
+  .categoryItem:hover {
+    background: #f0f0f0;
+  }
+  
+  .categoryImage {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 8px;
+  }
+  
+  /* Meals Section */
+  .mealsSection {
+    margin-top: 30px;
+  }
+  
+  .sectionTitle {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .mealsList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  .mealItem {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s ease;
+  }
+  
+  .mealItem:hover {
+    background: #f9f9f9;
+  }
+  
+  .mealImage {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 5px;
+  }
+  
+  /* Meal Details Section */
+  .mealDetails {
+    margin-top: 30px;
+    text-align: center;
+  }
+  
+  .mealTitle {
+    margin-bottom: 15px;
+  }
+  
+  .mealDetailImage {
+    width: 200px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .ingredientsTitle {
+    margin-bottom: 10px;
+  }
+  
+  .ingredientsList {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+  }
+  
+  .ingredientItem {
+    margin-bottom: 5px;
+  }
+  
+  .showAllButton {
+    padding: 8px 12px;
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .showAllButton:hover {
+    background-color: #005bb5;
+  }
+  
