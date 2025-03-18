@@ -1,8 +1,11 @@
-/* Menu.module.scss */
+
 
 .container {
     padding: 20px;
+    height: 1000px;
     font-family: Arial, sans-serif;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
+                url('../../public/cloudTwo.jpg');
   }
   
   .title {
@@ -13,7 +16,7 @@
     text-align: center;
     margin-bottom: 20px;
   }
-  /* Category List */
+  
   .categoryList {
     list-style: none;
     padding: 0;
@@ -46,7 +49,7 @@
     border-radius: 8px;
   }
   
-  /* Meals Section */
+  
   .mealsSection {
     margin-top: 30px;
   }
@@ -86,7 +89,7 @@
     border-radius: 5px;
   }
   
-  /* Meal Details Section */
+  
   .mealDetails {
     margin-top: 30px;
     text-align: center;

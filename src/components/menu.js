@@ -1,5 +1,6 @@
+'use client';
 import { useState, useEffect } from 'react';
-import styles from '../style/Menu.module.scss'; // Adjust the path if needed
+import styles from '../style/Menu.module.scss';
 
 const Menu = () => {
   const [categories, setCategories] = useState([]); // Stores categories with images
@@ -8,7 +9,7 @@ const Menu = () => {
   const [mealDetails, setMealDetails] = useState(null); // Detailed info for a clicked meal
   const [showAllIngredients, setShowAllIngredients] = useState(false); // Controls ingredients display
 
-  const mealsToShow = 6; // Number of meals to display per category
+  const mealsToShow = 6;
   const excludedCategories = [
     'Miscellaneous',
     'Goat',
@@ -74,12 +75,6 @@ const Menu = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Flavor Haven</h1>
-      <h3 className={styles.subTitle}>
-        A welcoming place where every dish is a treat
-      </h3>
-
-      {/* Category List */}
       <ul className={styles.categoryList}>
         {categories.map((category) => (
           <li
@@ -96,8 +91,6 @@ const Menu = () => {
           </li>
         ))}
       </ul>
-
-      {/* Meals Section */}
       {selectedCategory && (
         <div className={styles.mealsSection}>
           <h2 className={styles.sectionTitle}>{selectedCategory} Meals</h2>
@@ -120,7 +113,6 @@ const Menu = () => {
         </div>
       )}
 
-      {/* Meal Details Section */}
       {mealDetails && (
         <div className={styles.mealDetails}>
           <h2 className={styles.mealTitle}>{mealDetails.strMeal}</h2>
