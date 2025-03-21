@@ -1,99 +1,167 @@
 
 
 .container {
+  margin-top: 100px;
     padding: 20px;
-    height: 1000px;
+    min-height: 910px;//fixa den sen!!
     font-family: Arial, sans-serif;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), 
                 url('../../public/cloudTwo.jpg');
   }
   
-  .title {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .subTitle{
-    text-align: center;
-    margin-bottom: 20px;
-  }
   
   .categoryList {
+    margin-top: 150px;
     list-style: none;
     padding: 0;
-    display: flex;
     flex-wrap: wrap;
-    gap: 15px;
     justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(140px, 2fr)); 
+    gap: 50px; /* More space between items */
+    justify-items: center;
+    
   }
   
   .categoryItem {
+    background-color: #868484aa;
     cursor: pointer;
-    color: blue;
-    text-decoration: underline;
+    color: rgb(223, 191, 131);
+    width: 300px;
+    height: fit-content;
     display: flex;
     align-items: center;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 8px;
     transition: background 0.3s ease;
+    font-size: 2rem;
   }
   
   .categoryItem:hover {
-    background: #f0f0f0;
+    background: #58310cc7;
   }
   
   .categoryImage {
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     margin-right: 10px;
     border-radius: 8px;
   }
   
   
   .mealsSection {
-    margin-top: 30px;
+    margin-top: 50px;
   }
   
   .sectionTitle {
     text-align: center;
     margin-bottom: 15px;
+    color: rgb(223, 191, 131);
   }
   
   .mealsList {
-    list-style: none;
-    padding: 0;
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
   }
   
   .mealItem {
+    background-color: #292727d1;
+    cursor: pointer;
+    margin-top: 15px;
+    color: rgb(223, 191, 131);
     cursor: pointer;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    display: flex;
-    align-items: center;
+   
+    font-size: 20px;
     transition: background 0.3s ease;
+    display: grid;
+    grid-template-columns: 250px auto;  
+    gap: 10px; /* More space between items */
+    justify-content: center;
+    align-items: center;
   }
   
   .mealItem:hover {
     background: #f9f9f9;
+    color: #444;
   }
   
   .mealImage {
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     margin-right: 10px;
     border-radius: 5px;
   }
   
   
   .mealDetails {
-    margin-top: 30px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 95%;
+    width: 90%;
+    height: 90%;
     text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s ease-in-out;
+    position: relative; // In case you want to position elements inside
+  
+    h2 {
+      font-size: 34px;
+      margin-bottom: 15px;
+    }
+  
+    img {
+      width: 100%;
+      max-width: 50%;
+      width: 390px;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+  
+    li{
+      font: 40px;
+    }
+    p {
+      font-size: 96px;
+      line-height: 1.5;
+      color: #444;
+    }
+  
+    .backToButton {
+      background-color: #ff4500;
+      font-size: large;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s;
+  
+      &:hover {
+        background-color: #cc3700;
+      }
+    }
   }
+  
+  // Optional: Add a fade-in animation
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
   
   .mealTitle {
     margin-bottom: 15px;
@@ -106,6 +174,8 @@
   }
   
   .ingredientsTitle {
+    font-size: 20px;
+    font-weight: bold;
     margin-bottom: 10px;
   }
   
@@ -113,6 +183,8 @@
     list-style: none;
     padding: 0;
     margin-bottom: 15px;
+    font-size: 20px;
+    //font-weight: bold;
   }
   
   .ingredientItem {
@@ -129,7 +201,43 @@
     transition: background 0.3s ease;
   }
   
-  .showAllButton:hover {
-    background-color: #005bb5;
+  .ingredientItem,
+.mealItem,
+.categoryItem,
+.sectionTitle {
+  margin-bottom: 10px; /* Adjust this value for more or less space */
+}
+
+.overlay {
+  position: fixed; // Cover the whole page
+  top: 0;
+  left: 0;
+  width: 100vw; // Full width of the viewport
+  height: 100vh; // Full height of the viewport
+  background-color: rgba(0, 0, 0, 0.8); // Dark overlay with transparency
+  z-index: 1000; // Ensure it appears above everything
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .mealsSection {
+    background: rgba(255, 255, 255, 0.88);
+    padding: 25px;
+    border-radius: 10px;
+    max-width: 90%;
+    height: 90%;
+    //width: 80%;
+    text-align: center;
   }
-  
+
+  .closeButton {
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    background: transparent;
+    border: none;
+    font-size:30px;
+    cursor: pointer;
+    color: white;
+  }
+}

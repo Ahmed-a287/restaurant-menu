@@ -1,13 +1,13 @@
-'use client';
 import { useState, useEffect } from 'react';
 import styles from '../style/Menu.module.scss';
 
 const Menu = () => {
-  const [categories, setCategories] = useState([]); // Stores categories with images
-  const [selectedCategory, setSelectedCategory] = useState(null); // The chosen category
-  const [meals, setMeals] = useState([]); // Meals for the selected category
-  const [mealDetails, setMealDetails] = useState(null); // Detailed info for a clicked meal
-  const [showAllIngredients, setShowAllIngredients] = useState(false); // Controls ingredients display
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [meals, setMeals] = useState([]);
+  const [mealDetails, setMealDetails] = useState(null);
+  const [showAllIngredients, setShowAllIngredients] = useState(false);
+  const [showMeals, setShowMeals] = useState(false);
 
   const mealsToShow = 6;
   const excludedCategories = [
@@ -19,7 +19,6 @@ const Menu = () => {
   ];
 
   useEffect(() => {
-    // Fetch all categories
     fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list')
       .then((response) => response.json())
       .then((data) => {
@@ -27,7 +26,6 @@ const Menu = () => {
           .map((cat) => cat.strCategory)
           .filter((category) => !excludedCategories.includes(category));
 
-        // For each category, fetch the first meal for its image
         const categoriesWithImages = Promise.all(
           filteredCategories.map(async (category) => {
             const response = await fetch(
@@ -35,22 +33,22 @@ const Menu = () => {
             );
             const data = await response.json();
             const firstMeal = data.meals ? data.meals[0] : null;
-            return {
-              category,
-              image: firstMeal ? firstMeal.strMealThumb : '',
-            };
+            return { category, image: firstMeal ? firstMeal.strMealThumb : '' };
           })
         );
+
         categoriesWithImages.then((result) => setCategories(result));
       })
       .catch((error) => console.error('Error fetching categories:', error));
   }, []);
 
-  // Fetch meals for a selected category
+  // Fetch meals for selected category
   const fetchMealsByCategory = async (category) => {
     setSelectedCategory(category);
     setMeals([]);
-    setMealDetails(null);
+    setMealDetails(null); // Reset meal details when opening a category
+    setShowMeals(true);
+
     const response = await fetch(
       `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
     );
@@ -58,19 +56,20 @@ const Menu = () => {
     setMeals(data.meals.slice(0, mealsToShow));
   };
 
-  // Fetch details for a specific meal and reset ingredients view
+  // Fetch detailed meal information
   const fetchMealDetails = async (mealId) => {
-    setShowAllIngredients(false); // Reset "Show All Ingredients" state for each new meal
     const response = await fetch(
       `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`
     );
     const data = await response.json();
-    setMealDetails(data.meals[0]);
+    setMealDetails(data.meals[0]); // Store meal details
   };
 
-  // Handler for showing all ingredients
-  const handleShowAllIngredients = () => {
-    setShowAllIngredients(true);
+  // Close overlay
+  const closeMealOverlay = () => {
+    setShowMeals(false);
+    setSelectedCategory(null);
+    setMealDetails(null);
   };
 
   return (
@@ -91,60 +90,65 @@ const Menu = () => {
           </li>
         ))}
       </ul>
-      {selectedCategory && (
-        <div className={styles.mealsSection}>
-          <h2 className={styles.sectionTitle}>{selectedCategory} Meals</h2>
-          <ul className={styles.mealsList}>
-            {meals.map((meal) => (
-              <li
-                key={meal.idMeal}
-                className={styles.mealItem}
-                onClick={() => fetchMealDetails(meal.idMeal)}
-              >
-                <img
-                  src={meal.strMealThumb}
-                  alt={meal.strMeal}
-                  className={styles.mealImage}
-                />
-                <span>{meal.strMeal}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
 
-      {mealDetails && (
-        <div className={styles.mealDetails}>
-          <h2 className={styles.mealTitle}>{mealDetails.strMeal}</h2>
-          <img
-            src={mealDetails.strMealThumb}
-            alt={mealDetails.strMeal}
-            className={styles.mealDetailImage}
-          />
-          <h3 className={styles.ingredientsTitle}>Ingredients:</h3>
-          <ul className={styles.ingredientsList}>
-            {Object.keys(mealDetails)
-              .filter(
-                (key) => key.startsWith('strIngredient') && mealDetails[key]
-              )
-              .map((ingredientKey, index) => {
-                if (index < 5 || showAllIngredients) {
-                  return (
-                    <li key={ingredientKey} className={styles.ingredientItem}>
-                      {mealDetails[ingredientKey].split(' - ')[0]}
+      {/* Overlay */}
+      {showMeals && (
+        <div className={styles.overlay}>
+          <button className={styles.closeButton} onClick={closeMealOverlay}>
+            ❌
+          </button>
+
+          {/* Show meal details if a meal is selected */}
+          {mealDetails ? (
+            <div className={styles.mealDetails}>
+              <h2 className={styles.mealTitle}>{mealDetails.strMeal}</h2>
+              <img
+                src={mealDetails.strMealThumb}
+                alt={mealDetails.strMeal}
+                className={styles.mealDetailImage}
+              />
+
+              <h4>Ingredients:</h4>
+              <ul className={styles.ingredientsList}>
+                {[...Array(20)].map((_, i) => {
+                  const ingredient = mealDetails[`strIngredient${i + 1}`];
+                  const measure = mealDetails[`strMeasure${i + 1}`];
+                  return ingredient ? (
+                    <li key={i}>
+                      {measure} {ingredient}
                     </li>
-                  );
-                }
-                return null;
-              })}
-          </ul>
-          {!showAllIngredients && (
-            <button
-              onClick={handleShowAllIngredients}
-              className={styles.showAllButton}
-            >
-              Show All Ingredients
-            </button>
+                  ) : null;
+                })}
+              </ul>
+
+              <button
+                className={styles.showAllButton}
+                onClick={() => setMealDetails(null)}
+              >
+                Back to Meals
+              </button>
+            </div>
+          ) : (
+            /* Show meal list if no meal is selected */
+            <div className={styles.mealsSection}>
+              <h2 className={styles.sectionTitle}>{selectedCategory} Meals</h2>
+              <ul className={styles.mealsList}>
+                {meals.map((meal) => (
+                  <li
+                    key={meal.idMeal}
+                    className={styles.mealItem}
+                    onClick={() => fetchMealDetails(meal.idMeal)}
+                  >
+                    <img
+                      src={meal.strMealThumb}
+                      alt={meal.strMeal}
+                      className={styles.mealImage}
+                    />
+                    <span>{meal.strMeal}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
         </div>
       )}
