@@ -4,13 +4,16 @@
   justify-content: space-between; 
   width: 100%;
   padding: 10px 20px;
-  background-color: #252525;
+  background-color: #000000;
   color: white;
-  position: fixed;
+  //position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  z-index: 1000;
-}
+  z-index: 10;
+  }
+  
+ 
+
 
 .logoContainer {
   display: flex;
@@ -32,40 +35,74 @@
 }
 
 .title {
-  font-size: 1.8rem;
+  font-family:initial ;
+  font-style: italic;
+  font-size: 2.1rem;
   margin: 0;
 }
 
 .subTitle {
-  font-size: 1rem;
+  font-family:initial ;
+  font-style: italic;
+  font-size: 1.2rem;
   margin: 0;
 }
 
-.navLinks {
+
+/* Burger Menu Styles */
+.burger {
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.burgerLine {
+  width: 40px;
+  height: 6px;
+  background-color:  rgb(223, 191, 131);
+  border-radius: 8px;
+}
+
+/* Overlay Menu Styles */
+.overlay {
+  border-color: aliceblue;
+  border-style:groove;
+  border-radius: 5px;
+  position: fixed;
+  top: 35px;
+  right: 15px;
+  width: 10%;
+  height: 20%;
+  z-index: -1;
+  background-color: rgba(4, 4, 4, 0.477);
+  //color: white;
+  display: none;
+  //justify-content: center;
+  //align-items: center;
+  flex-direction: column;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%);
+}
+
+.overlay.showOverlay {
+  display: flex;
+  transform: translateX(0);
+}
+
+.overlay .navLinks {
+  margin-top: 5%;
+  margin-left: 5%;
+  flex-direction: column;
+  font-size: 1.7rem;
+  font-weight: bold;
+  display: flex;
+  gap: 30px;
   list-style: none;
   color: rgb(223, 191, 131);
-  font-size: 1.5rem;
 }
-
-.navLinks li a {
-  text-decoration: none;
-  
-}
-
-
 
 @media (max-width: 768px) {
-
-  .navLinks {
-    flex-direction: column;
-  }
-
-  .navLinks.showMenu {
-    display: flex; 
-  }
-
   .titleContainer {
     width: 60%;
     position: absolute;
@@ -81,18 +118,9 @@
     font-size: 0.5rem;
   }
 
-  .navLinks {
-    text-decoration: none;
-    font-size: 0.7rem;
-    font-weight: bold;
-  }
-  
   .logoContainer img {
     border-radius: 5px;
     width: 65px;
     height: 60px;
   }
 }
-
-
-

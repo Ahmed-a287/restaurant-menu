@@ -6,7 +6,6 @@ const Menu = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [meals, setMeals] = useState([]);
   const [mealDetails, setMealDetails] = useState(null);
-  const [showAllIngredients, setShowAllIngredients] = useState(false);
   const [showMeals, setShowMeals] = useState(false);
 
   const mealsToShow = 6;
@@ -74,6 +73,7 @@ const Menu = () => {
 
   return (
     <div className={styles.container}>
+      <h1 className={styles.title}>MENU</h1>
       <ul className={styles.categoryList}>
         {categories.map((category) => (
           <li
@@ -101,6 +101,12 @@ const Menu = () => {
           {/* Show meal details if a meal is selected */}
           {mealDetails ? (
             <div className={styles.mealDetails}>
+              <button
+                className={styles.backToMeals}
+                onClick={() => setMealDetails(null)}
+              >
+                ❌
+              </button>
               <h2 className={styles.mealTitle}>{mealDetails.strMeal}</h2>
               <img
                 src={mealDetails.strMealThumb}
@@ -113,20 +119,33 @@ const Menu = () => {
                 {[...Array(20)].map((_, i) => {
                   const ingredient = mealDetails[`strIngredient${i + 1}`];
                   const measure = mealDetails[`strMeasure${i + 1}`];
-                  return ingredient ? (
-                    <li key={i}>
-                      {measure} {ingredient}
-                    </li>
-                  ) : null;
+
+                  // Remove any leading numbers and dots from both measure and ingredient
+                  const cleanIngredient = ingredient
+                    ?.replace(/^[0-9]*\.?\s*/g, '')
+                    .trim();
+                  const cleanMeasure = measure
+                    ?.replace(/^[0-9]*\.?\s*/g, '')
+                    .trim();
+
+                  // Limit to only the first 6 ingredients
+                  if (i < 6 && ingredient) {
+                    return (
+                      <li key={i}>
+                        {cleanMeasure} {cleanIngredient}
+                      </li>
+                    );
+                  }
+                  return null;
                 })}
               </ul>
 
-              <button
+              {/*<button
                 className={styles.showAllButton}
                 onClick={() => setMealDetails(null)}
               >
                 Back to Meals
-              </button>
+              </button> */}
             </div>
           ) : (
             /* Show meal list if no meal is selected */

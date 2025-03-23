@@ -1,7 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Menu from '../../components/menu';
-import Navbar from '@/components/Navbar';
+import Navbar from '../../components/navbar';
+import Footer from '../../components/footer';
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -35,6 +36,7 @@ export default function Home() {
     <div>
       <Navbar />
       <Menu />
+      <Footer />
     </div>
   );
 }

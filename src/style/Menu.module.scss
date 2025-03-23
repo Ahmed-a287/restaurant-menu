@@ -1,21 +1,29 @@
 
 
 .container {
-  margin-top: 100px;
     padding: 20px;
-    min-height: 910px;//fixa den sen!!
+    min-height: 82vh;
     font-family: Arial, sans-serif;
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), 
                 url('../../public/cloudTwo.jpg');
   }
   
-  
-  .categoryList {
-    margin-top: 150px;
-    list-style: none;
-    padding: 0;
-    flex-wrap: wrap;
+  .title{
+    padding-top: 80px;
+    font-family:initial ;
+    font-style: italic;
+    font-size: 3rem;
+    height: 140px;
+    color: rgb(223, 191, 131);
+    display: flex;
     justify-content: center;
+    text-decoration: underline;
+  }
+  .categoryList {
+    margin-top: 5%;
+    list-style: none;
+    padding: 50px;
+    border-radius: 10px;
     display: grid;
     grid-template-columns: repeat(3, minmax(140px, 2fr)); 
     gap: 50px; /* More space between items */
@@ -25,7 +33,7 @@
   
   .categoryItem {
     background-color: #868484aa;
-    cursor: pointer;
+    cursor:pointer;
     color: rgb(223, 191, 131);
     width: 300px;
     height: fit-content;
@@ -39,7 +47,9 @@
   }
   
   .categoryItem:hover {
-    background: #58310cc7;
+    transform: scale(1.2);
+    background: rgb(223, 191, 131);
+    color: black;
   }
   
   .categoryImage {
@@ -55,67 +65,88 @@
   }
   
   .sectionTitle {
+    margin-top: 8%;
     text-align: center;
     margin-bottom: 15px;
     color: rgb(223, 191, 131);
   }
   
   .mealsList {
+    margin-top: 5%;
     display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
-  justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
   }
   
   .mealItem {
-    background-color: #292727d1;
-    cursor: pointer;
     margin-top: 15px;
-    color: rgb(223, 191, 131);
     cursor: pointer;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-   
+    background-color: #868484aa;
+    cursor:pointer;
+    color: rgb(223, 191, 131);
     font-size: 20px;
     transition: background 0.3s ease;
-    display: grid;
-    grid-template-columns: 250px auto;  
-    gap: 10px; /* More space between items */
-    justify-content: center;
+    display: flex;
     align-items: center;
+    justify-items: center;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(180px, 2fr)); 
+    gap: 50px; /* More space between items */
+    //justify-items: center;
+    width:min-content ;
+
   }
   
   .mealItem:hover {
-    background: #f9f9f9;
-    color: #444;
+    transform: scale(1.2);
+    background: rgb(223, 191, 131);
+    color: black;
   }
   
   .mealImage {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 100px;
     margin-right: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
+    border-color: rgb(255, 255, 255);
+    border-style: groove;
   }
   
+  .mealItem span {
+    grid-column: 2 / 4;
+    font-size: 2rem; /* Adjust text size */
+}
   
   .mealDetails {
-    background: white;
-    padding: 20px;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)), 
+                url('../../public/cloudTwo.jpg');
+    padding: 25px;
     border-radius: 10px;
     max-width: 95%;
-    width: 90%;
+    border: 1px solid #ccc;
     height: 90%;
     text-align: center;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     animation: fadeIn 0.3s ease-in-out;
     position: relative; // In case you want to position elements inside
+    color: white;
+    min-width: 90%;
   
     h2 {
-      font-size: 34px;
+      margin-top: 2%;
+      font-size: 3rem;
       margin-bottom: 15px;
     }
-  
+    
+    h4, li{
+      font-size: 1.5rem;
+      line-height: 1.9rem;
+    }
     img {
       width: 100%;
       max-width: 50%;
@@ -133,16 +164,15 @@
       color: #444;
     }
   
-    .backToButton {
-      background-color: #ff4500;
-      font-size: large;
-      color: white;
-      padding: 10px 20px;
+    .backToMeals {
+      position: absolute;
+      right: 2%;
+      background: transparent;
       border: none;
-      border-radius: 5px;
+      font-size:2.5rem;
       cursor: pointer;
-      margin-top: 10px;
-      transition: background 0.3s;
+   
+    
   
       &:hover {
         background-color: #cc3700;
@@ -214,30 +244,36 @@
   left: 0;
   width: 100vw; // Full width of the viewport
   height: 100vh; // Full height of the viewport
-  background-color: rgba(0, 0, 0, 0.8); // Dark overlay with transparency
-  z-index: 1000; // Ensure it appears above everything
+  background-color: rgba(0, 0, 0, 0.853); // Dark overlay with transparency
+  z-index: 100; // Ensure it appears above everything
   display: flex;
   justify-content: center;
   align-items: center;
 
   .mealsSection {
-    background: rgba(255, 255, 255, 0.88);
+    margin:auto auto;
     padding: 25px;
     border-radius: 10px;
     max-width: 90%;
     height: 90%;
-    //width: 80%;
-    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), 
+                url('../../public/cloudTwo.jpg');
+    cursor:pointer;
+    color: rgb(223, 191, 131);
+    padding: 5px;
+    border: 1px solid #ccc;
+    font-size: 2rem;
   }
 
   .closeButton {
     position: absolute;
-    top: 3%;
-    right: 3%;
+    top: 8%;
+    right: 7%;
     background: transparent;
     border: none;
-    font-size:30px;
+    font-size:2.5rem;
     cursor: pointer;
-    color: white;
+    //color: white;
+ 
   }
 }
