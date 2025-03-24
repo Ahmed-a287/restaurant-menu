@@ -1,5 +1,3 @@
-
-
 .container {
     padding: 20px;
     min-height: 82vh;
@@ -7,7 +5,8 @@
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), 
                 url('../../public/cloudTwo.jpg');
   }
-  
+  // Catgory 
+  // Head menu
   .title{
     padding-top: 80px;
     font-family:initial ;
@@ -26,7 +25,7 @@
     border-radius: 10px;
     display: grid;
     grid-template-columns: repeat(3, minmax(140px, 2fr)); 
-    gap: 50px; /* More space between items */
+    gap: 50px;
     justify-items: center;
     
   }
@@ -35,8 +34,8 @@
     background-color: #868484aa;
     cursor:pointer;
     color: rgb(223, 191, 131);
-    width: 300px;
-    height: fit-content;
+    width: 350px;
+    height: 100px;
     display: flex;
     align-items: center;
     padding: 5px;
@@ -59,11 +58,38 @@
     border-radius: 8px;
   }
   
-  
+
+// THE OVERLAY
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; 
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.853); 
+  z-index: 100; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+   
+  // MEALS
+  // First overly
   .mealsSection {
-    margin-top: 50px;
+    margin:auto auto;
+    padding: 25px;
+    border-radius: 10px;
+    max-width: 90%;
+    height: 90%;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), 
+                url('../../public/cloudTwo.jpg');
+    cursor:pointer;
+    color: rgb(223, 191, 131);
+    padding: 5px;
+    border: 1px solid #ccc;
+    font-size: 2rem;
+    animation: fadeIn 0.6s ease-in-out;
   }
-  
   .sectionTitle {
     margin-top: 8%;
     text-align: center;
@@ -89,15 +115,12 @@
     cursor:pointer;
     color: rgb(223, 191, 131);
     font-size: 20px;
-    transition: background 0.3s ease;
     display: flex;
     align-items: center;
     justify-items: center;
-
     display: grid;
     grid-template-columns: repeat(3, minmax(180px, 2fr)); 
-    gap: 50px; /* More space between items */
-    //justify-items: center;
+    gap: 50px; 
     width:min-content ;
 
   }
@@ -119,9 +142,25 @@
   
   .mealItem span {
     grid-column: 2 / 4;
-    font-size: 2rem; /* Adjust text size */
+    font-size: 2rem; 
+}
+
+.closeButton {
+  position: absolute;
+  top: 8%;
+  right: 7%;
+  background: transparent;
+  border: none;
+  font-size:2.5rem;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.3);
+  }
+
 }
   
+// Meals
+// Second overly
   .mealDetails {
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)), 
                 url('../../public/cloudTwo.jpg');
@@ -132,8 +171,8 @@
     height: 90%;
     text-align: center;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    animation: fadeIn 0.3s ease-in-out;
-    position: relative; // In case you want to position elements inside
+    animation: fadeIn 0.6s ease-in-out;
+    position: relative; 
     color: white;
     min-width: 90%;
   
@@ -143,9 +182,15 @@
       margin-bottom: 15px;
     }
     
-    h4, li{
+    h4{
+      font-size: 1.9rem;
+      line-height: 2.1rem;
+      margin-bottom: 4px;
+      text-decoration: underline;
+    }
+    li{
+      padding: 4px;
       font-size: 1.5rem;
-      line-height: 1.9rem;
     }
     img {
       width: 100%;
@@ -155,32 +200,9 @@
       margin: 10px 0;
     }
   
-    li{
-      font: 40px;
-    }
-    p {
-      font-size: 96px;
-      line-height: 1.5;
-      color: #444;
-    }
-  
-    .backToMeals {
-      position: absolute;
-      right: 2%;
-      background: transparent;
-      border: none;
-      font-size:2.5rem;
-      cursor: pointer;
-   
-    
-  
-      &:hover {
-        background-color: #cc3700;
-      }
-    }
   }
   
-  // Optional: Add a fade-in animation
+  
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -214,66 +236,141 @@
     padding: 0;
     margin-bottom: 15px;
     font-size: 20px;
-    //font-weight: bold;
   }
   
   .ingredientItem {
     margin-bottom: 5px;
   }
   
-  .showAllButton {
-    padding: 8px 12px;
-    background-color: #0070f3;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .ingredientItem,
-.mealItem,
-.categoryItem,
-.sectionTitle {
-  margin-bottom: 10px; /* Adjust this value for more or less space */
-}
-
-.overlay {
-  position: fixed; // Cover the whole page
-  top: 0;
-  left: 0;
-  width: 100vw; // Full width of the viewport
-  height: 100vh; // Full height of the viewport
-  background-color: rgba(0, 0, 0, 0.853); // Dark overlay with transparency
-  z-index: 100; // Ensure it appears above everything
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  .mealsSection {
-    margin:auto auto;
-    padding: 25px;
-    border-radius: 10px;
-    max-width: 90%;
-    height: 90%;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)), 
-                url('../../public/cloudTwo.jpg');
-    cursor:pointer;
-    color: rgb(223, 191, 131);
-    padding: 5px;
-    border: 1px solid #ccc;
-    font-size: 2rem;
-  }
-
-  .closeButton {
+  .backToMeals {
     position: absolute;
-    top: 8%;
-    right: 7%;
+    right: 2%;
     background: transparent;
     border: none;
     font-size:2.5rem;
     cursor: pointer;
-    //color: white;
  
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
+
+  
+}
+
+
+/* Media Query for iPhone 14 Pro */
+@media (max-width: 880px)  {
+  .container {
+    padding: 1px;
+    min-height: 82vh;
+    display: grid;
+  }
+
+  .title {
+    padding-top: 0px;
+    font-family:initial ;
+    font-style: italic;
+    font-size: 2rem;
+    height: 0px;
+    color: rgb(223, 191, 131);
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+  }
+
+}
+
+///////////////////////////
+/* Media Query for iPad Air */
+@media (max-width: 1240px) {
+  .container {
+    height: 90vh;
+    padding: 15px;
+    font-size: 16px; /* Slightly larger font for mid-size screens */
+    background-size: cover;
+  }
+
+  .title {
+    font-size: 3.5rem; /* Reduce title size */
+    padding-top: 60px;
+    height: auto;
+  }
+
+  .categoryList {
+    grid-template-columns: repeat(2, 1fr); /* Two columns layout */
+    gap: 70px;
+  }
+  .mealContainer{
+    font-size: large;
+  }
+  .categoryItem {
+    width: 400px;
+    height: 130px; /* Adjust height */
+    font-size: 2.7rem; /* Slightly smaller font size */
+  }
+
+  .categoryImage {
+    width: 100px;
+    height: 100px; /* Adjust image size */
+  }
+  
+  .mealsSection {
+    max-width: 95%;
+    padding: 20px;
+  }
+
+  .mealItem {
+    grid-template-columns: 1fr 1fr; /* Two columns for meals */
+    font-size: 1.2rem; /* Adjust font size */
+    gap: 20px; /* Adjust spacing */
+  }
+
+  .mealImage {
+    width: 120px;
+    height: 90px; /* Adjust image size */
+  }
+
+  .mealDetails {
+    padding: 20px;
+    font-size: 2rem; /* Slightly larger font */
+  }
+
+  //img {
+    //max-width: 60%; /* Limit image size */
+  //}
+
+  .closeButton,
+  .backToMeals {
+    font-size: 2.2rem; /* Adjust button size */
   }
 }
+
+/* General Media Query for Larger Tablets or Small Desktops */
+/*
+@media (max-width: 1180px) {
+  .container {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 3rem; 
+  }
+
+  .categoryList {
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 40px;
+  }
+
+  .categoryItem {
+    width: 350px;
+    height: 100px; 
+    font-size: 2rem; 
+  }
+
+  .mealItem {
+    grid-template-columns: repeat(2, 1fr); 
+    font-size: 1.5rem; 
+  }
+}
+*/

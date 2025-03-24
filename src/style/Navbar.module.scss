@@ -55,6 +55,10 @@
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
+  &:hover {
+    transform: scale(1.2);
+    background-color: rgb(134, 56, 0);
+  }
 }
 
 .burgerLine {
@@ -102,25 +106,24 @@
   color: rgb(223, 191, 131);
 }
 
-@media (max-width: 768px) {
-  .titleContainer {
-    width: 60%;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .title {
-    font-size: 1rem;
-  }
-
-  .subTitle {
-    font-size: 0.5rem;
-  }
-
-  .logoContainer img {
+@media (max-width: 1240px) {
+  .overlay {
+    border-color: aliceblue;
+    border-style:groove;
     border-radius: 5px;
-    width: 65px;
-    height: 60px;
+    position: fixed;
+    top: 31px;
+    right: 10px;
+    width: 15%;
+    height: 11%;
+    z-index: -1;
+    background-color: rgba(4, 4, 4, 0.477);
+    //color: white;
+    display: none;
+    //justify-content: center;
+    //align-items: center;
+    flex-direction: column;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%);
   }
 }

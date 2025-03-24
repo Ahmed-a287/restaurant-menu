@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import styles from '../style/Footer.module.scss'; // Assuming you're using the same styling
+import styles from '../style/Footer.module.scss';
 
 const Footer = () => {
   return (

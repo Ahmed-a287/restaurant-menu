@@ -76,18 +76,20 @@ const Menu = () => {
       <h1 className={styles.title}>MENU</h1>
       <ul className={styles.categoryList}>
         {categories.map((category) => (
-          <li
-            key={category.category}
-            className={styles.categoryItem}
-            onClick={() => fetchMealsByCategory(category.category)}
-          >
-            <img
-              src={category.image}
-              alt={category.category}
-              className={styles.categoryImage}
-            />
-            <span>{category.category}</span>
-          </li>
+          <div className={styles.mealContainer}>
+            <li
+              key={category.category}
+              className={styles.categoryItem}
+              onClick={() => fetchMealsByCategory(category.category)}
+            >
+              <img
+                src={category.image}
+                alt={category.category}
+                className={styles.categoryImage}
+              />
+              <span>{category.category}</span>
+            </li>
+          </div>
         ))}
       </ul>
 
@@ -139,13 +141,6 @@ const Menu = () => {
                   return null;
                 })}
               </ul>
-
-              {/*<button
-                className={styles.showAllButton}
-                onClick={() => setMealDetails(null)}
-              >
-                Back to Meals
-              </button> */}
             </div>
           ) : (
             /* Show meal list if no meal is selected */

@@ -20,24 +20,16 @@
   background-position: center;
 }
 
-.heroContent {
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translateX(-50%);    text-align: center;
-  color: white;
-  z-index: 2;  }
 
-.title {
-  font-size: 3rem;
-  margin-bottom: 10px;
-}
 
-.subTitle {
-  font-size: 1.5rem;
-}
+
+
+
 
 .heroImage {
+  background: transparent;
+
+  border-radius: 50%;
   position: absolute;
     animation: spin 25s linear infinite;
   width: 30%;    max-width: 400px;    bottom: 10%;    right: 5%;    }
@@ -61,6 +53,9 @@
 }
 
 @media (max-width: 1240px) {
+  .container{
+    height: 90vh;
+  }
   .heroImage {
     width: 40%;      max-width: 300px;
     top: 20%;
@@ -76,48 +71,28 @@
         width: 90%;
   }
 }
-
+//iPhone 14 pro 
 @media (max-width: 880px) {
+  .container{
+    height: 82vh;
+  }
   .heroImage {
     width: 40%;      max-width: 300px;
-    top: 20%;
+    top: 15%;
     right: 30%;
   }
 
   .visionText {
     display: flex;
-    flex-direction: column;
-    text-align: center;
-    bottom: 55%;
-    font-size: 1.3rem;  
-    width: 90%;
-  }
-}
-
-@media (max-width: 676px) {
-  
-  .heroImage {
-    width: 50%;      max-width: 50px;
-    bottom: 45%;
-    right: 25%;
-  }
-
-  .visionText {
-    display: flex;
-    flex-direction: column ;
-    justify-content: center;
-    align-items: center;
-    top: 65%;
-    line-height: 1.6;
-    font-size: .7rem;      text-align: center;      font-weight:normal;
-  }
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
+    width: 70%;
+    margin: auto auto;
+    left: 0;
+    right: 0;
+    h2{
+      font-size: 2rem;
+    }
+    p{
+      font-size: 1rem;
+    }
   }
 }

@@ -18,7 +18,6 @@ export default function Home() {
           throw new Error('Failed to fetch menu');
         }
         const data = await response.json();
-        console.log('Fetched data:', data); // Just for debugging
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Unknown error');
       } finally {

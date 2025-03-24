@@ -2,7 +2,7 @@
 import React from 'react';
 import styles from '../style/HomePage.module.scss';
 import Image from 'next/image';
-import heroImg from '../../public/hero.png';
+import heroImg from '../../public/heroThree.png';
 
 const Home = () => {
   return (
