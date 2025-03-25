@@ -86,10 +86,6 @@ const AboutPage = () => {
         </div>
       </div>
       <Footer />
-      {/* Footer 
-      <footer className={styles.footer}>
-        <p>© {new Date().getFullYear()} Restaurant. All rights reserved.</p>
-      </footer> */}
     </div>
   );
 };

@@ -12,11 +12,11 @@ const Home = () => {
           <h2>Our Vision </h2>
           <p>
             At Flavor Haven, we believe food is more than just a meal—it’s an
-            experience. Our vision is to create a welcoming space where flavors
-            tell a story, where every dish is crafted with passion, and where
-            people come together to share moments of joy. We strive to blend
-            tradition with innovation, bringing you a culinary journey that
-            delights the senses and warms the heart.
+            experience. <br /> Our vision is to create a welcoming space where
+            flavors tell a story, where every dish is crafted with passion, and
+            where people come together to share moments of joy. <br />
+            We strive to blend tradition with innovation, bringing you a
+            culinary journey that delights the senses and warms the heart.
           </p>
         </div>
 
