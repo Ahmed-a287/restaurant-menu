@@ -41,11 +41,10 @@ const Menu = () => {
       .catch((error) => console.error('Error fetching categories:', error));
   }, []);
 
-  // Fetch meals for selected category
   const fetchMealsByCategory = async (category) => {
     setSelectedCategory(category);
     setMeals([]);
-    setMealDetails(null); // Reset meal details when opening a category
+    setMealDetails(null);
     setShowMeals(true);
 
     const response = await fetch(
@@ -53,32 +52,79 @@ const Menu = () => {
     );
     const data = await response.json();
     setMeals(data.meals.slice(0, mealsToShow));
+
+    // Debugging meals list
+    console.log(`Meals fetched for category ${category}:`, data.meals);
   };
 
-  // Fetch detailed meal information
   const fetchMealDetails = async (mealId) => {
     const response = await fetch(
       `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`
     );
     const data = await response.json();
-    setMealDetails(data.meals[0]); // Store meal details
+    setMealDetails(data.meals[0]);
+
+    // Debugging meal details
+    console.log('Meal details fetched:', data.meals[0]);
   };
 
-  // Close overlay
   const closeMealOverlay = () => {
     setShowMeals(false);
     setSelectedCategory(null);
     setMealDetails(null);
   };
 
+  // Log all `<li>` elements as lists
+  useEffect(() => {
+    if (categories.length > 0) {
+      const categoryList = categories.map((category) => category.category);
+      console.log('Category List:', categoryList);
+    }
+  }, [categories]);
+
+  useEffect(() => {
+    if (meals.length > 0) {
+      const mealList = meals.map((meal) => meal.strMeal);
+      console.log('Meal List:', mealList);
+    } else {
+      console.log('No meals available for this category');
+    }
+  }, [meals]);
+
+  useEffect(() => {
+    if (mealDetails) {
+      const ingredientsList = [...Array(20)]
+        .map((_, i) => {
+          const ingredient = mealDetails[`strIngredient${i + 1}`];
+          const measure = mealDetails[`strMeasure${i + 1}`];
+
+          if (ingredient && measure) {
+            return `${measure.trim()} ${ingredient.trim()}`;
+          } else if (ingredient) {
+            return ingredient.trim();
+          }
+          return null;
+        })
+        .filter((item) => item !== null);
+
+      if (ingredientsList.length > 0) {
+        console.log('Ingredients List:', ingredientsList);
+      } else {
+        console.log('No ingredients available for this meal');
+      }
+    }
+  }, [mealDetails]);
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>MENU</h1>
       <ul className={styles.categoryList}>
-        {categories.map((category) => (
-          <div className={styles.mealContainer}>
+        {categories.map((category, index) => (
+          <div
+            className={styles.mealContainer}
+            key={`${category.category}-${index}`}
+          >
             <li
-              key={category.category}
               className={styles.categoryItem}
               onClick={() => fetchMealsByCategory(category.category)}
             >
@@ -122,7 +168,6 @@ const Menu = () => {
                   const ingredient = mealDetails[`strIngredient${i + 1}`];
                   const measure = mealDetails[`strMeasure${i + 1}`];
 
-                  // Remove any leading numbers and dots from both measure and ingredient
                   const cleanIngredient = ingredient
                     ?.replace(/^[0-9]*\.?\s*/g, '')
                     .trim();
@@ -130,10 +175,9 @@ const Menu = () => {
                     ?.replace(/^[0-9]*\.?\s*/g, '')
                     .trim();
 
-                  // Limit to only the first 6 ingredients
                   if (i < 6 && ingredient) {
                     return (
-                      <li key={i}>
+                      <li key={`${i}-${cleanIngredient}`}>
                         {cleanMeasure} {cleanIngredient}
                       </li>
                     );
@@ -147,9 +191,9 @@ const Menu = () => {
             <div className={styles.mealsSection}>
               <h2 className={styles.sectionTitle}>{selectedCategory} Meals</h2>
               <ul className={styles.mealsList}>
-                {meals.map((meal) => (
+                {meals.map((meal, index) => (
                   <li
-                    key={meal.idMeal}
+                    key={`${meal.idMeal}-${index}`}
                     className={styles.mealItem}
                     onClick={() => fetchMealDetails(meal.idMeal)}
                   >

@@ -11,9 +11,6 @@
   top: 0;
   z-index: 10;
   }
-  
- 
-
 
 .logoContainer {
   display: flex;
@@ -118,12 +115,67 @@
     height: 11%;
     z-index: -1;
     background-color: rgba(4, 4, 4, 0.477);
-    //color: white;
     display: none;
-    //justify-content: center;
-    //align-items: center;
     flex-direction: column;
     transition: transform 0.3s ease-in-out;
     transform: translateX(100%);
   }
+}
+
+@media (max-width: 880px) {
+  
+  .logoContainer {
+    margin-left: -1px;
+  }
+  .logoContainer img {
+  border-radius: 5px;
+  width: 65px;
+  height: 50px;
+}
+.titleContainer{
+  margin-left: 10px;
+}
+.title {
+  font-size: 1.2rem;
+  margin-top: 4px;
+  margin-bottom: 2px;
+}
+.subTitle {
+  font-size: 0.6rem;
+}
+
+.burger {
+  gap: 4px;
+  &:hover {
+    transform: scale(1.1);
+    background-color:black;
+  }
+  }
+
+.burgerLine {
+  width: 30px;
+  height: 4px;
+}
+
+/* Overlay Menu Styles */
+.overlay {
+  top: 20px;
+  right: 11px;
+  width: 16%;
+  height: 15%;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay .navLinks {
+  margin-top: 22%;
+  font-size: 0.8rem;
+  font-weight:500;
+  gap: 17px;
+  
+}
+
+.navbar{
+  height: 8vh;
+}
 }
