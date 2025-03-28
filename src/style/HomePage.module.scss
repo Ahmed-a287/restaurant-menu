@@ -1,4 +1,4 @@
-@import 'variables';
+@use 'variables.scss' as *;
 
 @keyframes spin {
   from {
@@ -38,7 +38,6 @@
   position: absolute;
   animation: spin 25s linear infinite;
   width: $hero-image-width-large;
-  max-width: $hero-image-max-width;
   bottom: $hero-image-bottom-large;
   right: $hero-image-right-large;
 }

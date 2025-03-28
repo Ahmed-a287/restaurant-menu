@@ -23,7 +23,10 @@ const Home = () => {
         <Image
           src={heroImg}
           alt="Hero Image"
-          layout="intrinsic"
+          style={{
+            width: '1200px',
+            height: 'auto',
+          }}
           className={styles.heroImage}
         />
       </div>
