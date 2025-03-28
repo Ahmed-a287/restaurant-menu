@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
-import Navbar from '../../components/Navbar';
+import Navbar from '../../Components/Navbar';
 import '@testing-library/jest-dom';
 import { useRouter } from 'next/router';
 
