@@ -38,6 +38,7 @@
   position: absolute;
   animation: spin 25s linear infinite;
   width: $hero-image-width-large;
+  max-width: $hero-image-max-width;
   bottom: $hero-image-bottom-large;
   right: $hero-image-right-large;
 }
@@ -93,8 +94,9 @@
   }
 
   .heroImage {
+    max-width: 250px;
     width: 50%;
-    right: 25%;
+    right: 20%;
   }
 
   .visionText {

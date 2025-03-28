@@ -183,7 +183,15 @@
   }
 }
 
-@media (max-width: 880px) {
+@media (min-width: 870px) and (max-width:1230px) {
+  .values {
+    .cards{
+      
+    }
+  }
+  
+}
+@media (max-width: 860px) {
   .container {
 
     .hero {

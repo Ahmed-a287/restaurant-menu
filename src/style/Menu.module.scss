@@ -23,7 +23,7 @@
 
 // Category List
 .categoryList {
-  margin-top: 5%;
+  margin-top: 4%;
   list-style: none;
   padding: 50px;
   border-radius: 10px;
@@ -56,8 +56,8 @@
 }
 
 .categoryImage {
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 100px;
   margin-right: 10px;
   border-radius: 8px;
 }
@@ -91,7 +91,7 @@
   }
 
   .sectionTitle {
-    margin-top: 8%;
+    margin-top: 3%;
     text-align: center;
     margin-bottom: 15px;
     color: $primary-color;
@@ -137,6 +137,8 @@
   .mealItem span {
     grid-column: 2 / 4;
     font-size: 2rem;
+    text-align: center;
+    margin: auto;
   }
 
   .closeButton {
