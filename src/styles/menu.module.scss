@@ -228,9 +228,12 @@
   .backToMeals {
     position: absolute;
     right: 2%;
-    background: transparent;
-    border: none;
-    font-size: 2.5rem;
+    background:transparent;
+    display: inline-block;
+    border-style: none;
+    font-size: 3.3rem;
+    transition: transform 0.2s ease;
+    color: red;
     cursor: pointer;
 
     &:hover {

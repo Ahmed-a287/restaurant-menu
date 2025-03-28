@@ -102,9 +102,11 @@ const Menu = () => {
               <button
                 className={styles.backToMeals}
                 onClick={() => setMealDetails(null)}
+                data-testid="back-to-meals-button"
               >
-                ❌
+                ↩
               </button>
+
               <h2 className={styles.mealTitle}>{mealDetails.strMeal}</h2>
               <img
                 src={mealDetails.strMealThumb}
