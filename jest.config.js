@@ -1,5 +1,5 @@
+//Latest setup
 const nextJest = require('next/jest');
-
 const createJestConfig = nextJest({
   dir: './',
 });
@@ -15,5 +15,4 @@ const customJestConfig = {
     '\\.(png|jpg|jpeg|gif|webp|svg)$': '<rootDir>/__mocks__/fileMock.js',
   },
 };
-
 module.exports = createJestConfig(customJestConfig);
