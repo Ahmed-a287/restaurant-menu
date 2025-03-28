@@ -1,0 +1,117 @@
+@use 'variables.scss' as *;
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  overflow: hidden;
+  width: 100%;
+  height: $container-height-large;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
+  align-items: center;      
+  position: relative;
+}
+
+.heroHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient($hero-bg-overlay, $hero-bg-overlay-dark), $hero-bg-image;
+  background-size: $hero-bg-size;
+  background-position: $hero-bg-position;
+}
+
+.heroImage {
+  background: transparent;
+  border-radius: 50%;
+  position: absolute;
+  animation: spin 25s linear infinite;
+  width: $hero-image-width-large;
+  max-width: $hero-image-max-width;
+  bottom: $hero-image-bottom-large;
+  right: $hero-image-right-large;
+}
+
+.visionText {
+  position: absolute;
+  width: $vision-text-width;
+  left: 5%;
+  top: $vision-text-top-large;
+  line-height: 1.5;
+  transform: translateY(-50%);
+  font-size: $vision-text-font-size;
+  color: $vision-text-color;
+  z-index: 10;  
+}
+
+@media (max-width: 2000px) {
+  .heroImage {
+    width: $hero-image-width-medium;
+    max-width: $hero-image-max-width;
+    bottom: $hero-image-bottom-medium;
+    right: $hero-image-right-medium;
+  }
+}
+
+@media (max-width: 1240px) {
+  .container {
+    height: $container-height-medium;
+  }
+
+  .heroImage {
+    width: $hero-image-width-medium;
+    width: 50%;
+    top: $hero-image-top-medium;
+    right: 25%;
+    top: 10%;
+  }
+
+  .visionText {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    top: 70%;
+    font-size: 2.5rem;
+    padding: 14px;
+    width: 90%;
+  }
+}
+
+@media (max-width: 880px) {
+  .container {
+    height: $container-height-small;
+  }
+
+  .heroImage {
+    max-width: 250px;
+    width: 50%;
+    right: 20%;
+  }
+
+  .visionText {
+    display: flex;
+    width: 70%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    
+    h2 {
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+}

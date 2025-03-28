@@ -1,0 +1,19 @@
+.footer {
+    margin-top: auto;
+    background-color: #111827;
+    color: rgb(223, 191, 131);
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 1280px) {
+    .footer{
+      font-size: 1.6rem;
+    }
+  }
+  @media (max-width: 880px) {
+    .footer{
+      font-size: 1rem;
+    }
+  }

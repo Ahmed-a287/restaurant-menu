@@ -1,0 +1,22 @@
+name: Protect main
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  prevent-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if push is allowed
+        run: |
+          # Allow pushes from the deploy workflow
+          if [[ "${{ github.event.head_commit.message }}" == *"Deploy to GitHub Pages"* ]]; then
+            echo "Allowing deploy workflow push"
+            exit 0
+          fi
+
+          # Block all other direct pushes
+          echo "Error: Direct pushes to main are blocked. Please create a Pull Request."
+          echo "If this is a deployment, include 'Deploy to GitHub Pages' in the commit message."
+          exit 1
