@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Restaurant Menu App
 
-## Getting Started
+Description
+This is a Menu App that displays a list of meals categorized by type. The app fetches data from an external API, which includes meal categories and their respective meal names. The data is then displayed on the page, allowing users to view different types of meals available under each category (e.g., Breakfast, Lunch, Dinner).
+The idea of the project is to replace the old paper menu with this app.
 
-First, run the development server:
+Features
+Fetches data from a remote API and processes the response.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Displays meal categories (e.g., Breakfast, Lunch, Dinner) along with a list of meals in each category, and finally, a detailed meal description (ingredients).
+Dynamically updates the content based on the fetched data.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Technology
+In this app, I used Next.js (React) for the frontend, which is suitable for this kind of project. Some reasons why Next.js is a good choice:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Server-Side Rendering (SSR)
+Static Site Generation (SSG)
+Dynamic Routing
+Fast Refresh
+Built-in support for CSS and SASS, etc.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+How It Works
+The app uses the fetch function to make an API call to retrieve meal data categorized by type.
+The response is parsed and processed, and the meals are organized by their categories. The app then renders the list of categories and the corresponding meals on the page.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The app is desigend to be used on diffrent (specific) platforms like large screens (laptops), tablets (iPad Air), and smartphones (iPhone 14 Pro Max).
