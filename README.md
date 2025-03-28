@@ -1,2 +1,1 @@
-# restaurant-menu
-next.js
+Updated Readme
