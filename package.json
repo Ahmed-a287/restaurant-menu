@@ -9,7 +9,9 @@
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "deploy": "GITHUB_PAGES=true next build && gh-pages -d out",
+    "predeploy": "npm run build"
   },
   "dependencies": {
     "next": "^15.2.4",
@@ -30,6 +32,7 @@
     "babel-jest": "^29.7.0",
     "eslint": "^9",
     "eslint-config-next": "15.2.2",
+    "gh-pages": "^6.3.0",
     "identity-obj-proxy": "^3.0.0",
     "jest-environment-jsdom": "^29.7.0",
     "typescript": "^5"
