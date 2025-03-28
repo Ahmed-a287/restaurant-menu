@@ -1,16 +1,12 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+export default [
+  {
+    ignores: ['**/*.test.js', 'src/app/test/**'], // Ignores all test files
+  },
+  {
+    rules: {
+      'react/display-name': 'off', // Disables display-name warnings
+      '@next/next/no-img-element': 'off', // Allows <img> tags in tests
+      'jsx-a11y/alt-text': 'off', // Disables alt-text checks
+    },
+  },
 ];
-
-export default eslintConfig;

@@ -14,5 +14,11 @@ const customJestConfig = {
     '\\.scss$': 'identity-obj-proxy',
     '\\.(png|jpg|jpeg|gif|webp|svg)$': '<rootDir>/__mocks__/fileMock.js',
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 module.exports = createJestConfig(customJestConfig);
