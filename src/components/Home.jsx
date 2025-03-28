@@ -6,7 +6,7 @@ import heroImg from '../../public/heroThree.png';
 
 const Home = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-testid="home-container">
       <div className={styles.heroHeader}>
         <div className={styles.visionText}>
           <h2>Our Vision </h2>

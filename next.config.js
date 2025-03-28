@@ -1,5 +1,3 @@
-const nextConfig = {
-  // Add your Next.js configuration here
-};
+const nextConfig = {};
 
 module.exports = nextConfig;
