@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
-import Navbar from '../../Components/Navbar';
+import Navbar from '../../components/Navbar';
 import '@testing-library/jest-dom';
 import { useRouter } from 'next/router';
 
@@ -58,30 +58,3 @@ describe('Navbar Component', () => {
     });
   });
 });
-/*import { render, screen, fireEvent } from '@testing-library/react';
-import Navbar from '../../Components/Navbar';
-import '@testing-library/jest-dom';
-import { useRouter } from 'next/router';
-
-// Mock next/router and next/image
-jest.mock('next/router', () => ({
-  useRouter: jest.fn(),
-}));
-
-jest.mock('next/image', () => ({
-  __esModule: true,
-  default: ({ priority, ...props }) => <img {...props} />, // Filter out priority, cause issue
-}));
-
-describe('Navbar Component', () => {
-  beforeEach(() => {
-    useRouter.mockImplementation(() => ({ pathname: '/' }));
-    render(<Navbar />);
-  });
-
-  it('renders logo, title and subtitle', () => {
-    expect(screen.getByAltText('Logo')).toBeInTheDocument();
-    expect(screen.getByText('Flavor Haven')).toBeInTheDocument();
-    expect(screen.getByText(/welcoming place/i)).toBeInTheDocument();
-  });
-});*/
