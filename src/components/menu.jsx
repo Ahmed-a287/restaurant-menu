@@ -1,4 +1,9 @@
 import { useState, useEffect } from 'react';
+import {
+  fetchCategories,
+  fetchMealsByCategory,
+  fetchMealDetails,
+} from '../utlis/api'; // import from the new API file
 import styles from '../styles/menu.module.scss';
 
 const Menu = () => {
@@ -18,54 +23,40 @@ const Menu = () => {
   ];
 
   useEffect(() => {
-    fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list')
-      .then((response) => response.json())
-      .then((data) => {
-        const filteredCategories = data.meals
-          .map((cat) => cat.strCategory)
-          .filter((category) => !excludedCategories.includes(category));
+    // Fetch categories from the API
+    const loadCategories = async () => {
+      const fetchedCategories = await fetchCategories();
+      const filteredCategories = fetchedCategories.filter(
+        (category) => !excludedCategories.includes(category)
+      );
 
-        const categoriesWithImages = Promise.all(
-          filteredCategories.map(async (category) => {
-            const response = await fetch(
-              `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
-            );
-            const data = await response.json();
-            const firstMeal = data.meals ? data.meals[0] : null;
-            return { category, image: firstMeal ? firstMeal.strMealThumb : '' };
-          })
-        );
+      const categoriesWithImages = await Promise.all(
+        filteredCategories.map(async (category) => {
+          const mealData = await fetchMealsByCategory(category);
+          const firstMeal = mealData[0] || null;
+          return { category, image: firstMeal ? firstMeal.strMealThumb : '' };
+        })
+      );
 
-        categoriesWithImages.then((result) => setCategories(result));
-      })
-      .catch((error) => console.error('Error fetching categories:', error));
+      setCategories(categoriesWithImages);
+    };
+
+    loadCategories();
   }, []);
 
-  const fetchMealsByCategory = async (category) => {
+  const handleCategoryClick = async (category) => {
     setSelectedCategory(category);
     setMeals([]);
     setMealDetails(null);
     setShowMeals(true);
 
-    const response = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
-    );
-    const data = await response.json();
-    setMeals(data.meals.slice(0, mealsToShow));
-
-    // Debugging meals list
-    console.log(`Meals fetched for category ${category}:`, data.meals);
+    const fetchedMeals = await fetchMealsByCategory(category);
+    setMeals(fetchedMeals.slice(0, mealsToShow));
   };
 
-  const fetchMealDetails = async (mealId) => {
-    const response = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`
-    );
-    const data = await response.json();
-    setMealDetails(data.meals[0]);
-
-    // Debugging meal details
-    console.log('Meal details fetched:', data.meals[0]);
+  const handleMealClick = async (mealId) => {
+    const fetchedMealDetails = await fetchMealDetails(mealId);
+    setMealDetails(fetchedMealDetails);
   };
 
   const closeMealOverlay = () => {
@@ -73,47 +64,6 @@ const Menu = () => {
     setSelectedCategory(null);
     setMealDetails(null);
   };
-
-  // Log all `<li>` elements as lists
-  useEffect(() => {
-    if (categories.length > 0) {
-      const categoryList = categories.map((category) => category.category);
-      console.log('Category List:', categoryList);
-    }
-  }, [categories]);
-
-  useEffect(() => {
-    if (meals.length > 0) {
-      const mealList = meals.map((meal) => meal.strMeal);
-      console.log('Meal List:', mealList);
-    } else {
-      console.log('No meals available for this category');
-    }
-  }, [meals]);
-
-  useEffect(() => {
-    if (mealDetails) {
-      const ingredientsList = [...Array(20)]
-        .map((_, i) => {
-          const ingredient = mealDetails[`strIngredient${i + 1}`];
-          const measure = mealDetails[`strMeasure${i + 1}`];
-
-          if (ingredient && measure) {
-            return `${measure.trim()} ${ingredient.trim()}`;
-          } else if (ingredient) {
-            return ingredient.trim();
-          }
-          return null;
-        })
-        .filter((item) => item !== null);
-
-      if (ingredientsList.length > 0) {
-        console.log('Ingredients List:', ingredientsList);
-      } else {
-        console.log('No ingredients available for this meal');
-      }
-    }
-  }, [mealDetails]);
 
   return (
     <div className={styles.container}>
@@ -126,7 +76,7 @@ const Menu = () => {
           >
             <li
               className={styles.categoryItem}
-              onClick={() => fetchMealsByCategory(category.category)}
+              onClick={() => handleCategoryClick(category.category)}
             >
               <img
                 src={category.image}
@@ -161,7 +111,6 @@ const Menu = () => {
                 alt={mealDetails.strMeal}
                 className={styles.mealDetailImage}
               />
-
               <h4>Ingredients:</h4>
               <ul className={styles.ingredientsList}>
                 {[...Array(20)].map((_, i) => {
@@ -187,7 +136,6 @@ const Menu = () => {
               </ul>
             </div>
           ) : (
-            /* Show meal list if no meal is selected */
             <div className={styles.mealsSection}>
               <h2 className={styles.sectionTitle}>{selectedCategory} Meals</h2>
               <ul className={styles.mealsList}>
@@ -195,7 +143,7 @@ const Menu = () => {
                   <li
                     key={`${meal.idMeal}-${index}`}
                     className={styles.mealItem}
-                    onClick={() => fetchMealDetails(meal.idMeal)}
+                    onClick={() => handleMealClick(meal.idMeal)}
                   >
                     <img
                       src={meal.strMealThumb}

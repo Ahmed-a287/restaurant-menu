@@ -33,6 +33,8 @@ const AboutPage = () => {
               src="/aboutres.jpg"
               alt="Restaurant Interior"
               fill
+              sizes="100vw"
+              priority
               className={styles.image}
             />
           </div>
