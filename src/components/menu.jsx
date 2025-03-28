@@ -3,18 +3,23 @@ import {
   fetchCategories,
   fetchMealsByCategory,
   fetchMealDetails,
-} from '../utlis/api'; // import from the new API file
+} from '../utlis/api'; // API functions for fetching menu data
 import styles from '../styles/menu.module.scss';
 
 const Menu = () => {
+  // State for storing fetched categories and their images
   const [categories, setCategories] = useState([]);
+
+  // State for tracking user selections and UI state
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [meals, setMeals] = useState([]);
   const [mealDetails, setMealDetails] = useState(null);
   const [showMeals, setShowMeals] = useState(false);
 
+  // Maximum meals to display per category
   const mealsToShow = 6;
   const excludedCategories = [
+    // Categories to filter out
     'Miscellaneous',
     'Goat',
     'Pork',
@@ -22,19 +27,27 @@ const Menu = () => {
     'Vegan',
   ];
 
+  // Fetch and process categories when component mounts
   useEffect(() => {
-    // Fetch categories from the API
     const loadCategories = async () => {
+      // Fetch raw category list from API
       const fetchedCategories = await fetchCategories();
+
+      // Filter out unwanted categories
       const filteredCategories = fetchedCategories.filter(
         (category) => !excludedCategories.includes(category)
       );
 
+      // Enhance categories with representative images
       const categoriesWithImages = await Promise.all(
         filteredCategories.map(async (category) => {
+          // Get sample meal for each category to use its image
           const mealData = await fetchMealsByCategory(category);
           const firstMeal = mealData[0] || null;
-          return { category, image: firstMeal ? firstMeal.strMealThumb : '' };
+          return {
+            category,
+            image: firstMeal ? firstMeal.strMealThumb : '',
+          };
         })
       );
 
@@ -42,32 +55,39 @@ const Menu = () => {
     };
 
     loadCategories();
-  }, []);
+  }, []); // Empty dependency array = runs once on mount
 
+  // Handle category selection - fetches meals for the category
   const handleCategoryClick = async (category) => {
-    setSelectedCategory(category);
-    setMeals([]);
-    setMealDetails(null);
-    setShowMeals(true);
+    setSelectedCategory(category); // Track selected category
+    setMeals([]); // Clear previous meals
+    setMealDetails(null); // Clear any open meal details
+    setShowMeals(true); // Show the meals overlay
 
+    // Fetch and limit meals for this category
     const fetchedMeals = await fetchMealsByCategory(category);
     setMeals(fetchedMeals.slice(0, mealsToShow));
   };
 
+  // Handle meal selection - fetches detailed Meal info
   const handleMealClick = async (mealId) => {
     const fetchedMealDetails = await fetchMealDetails(mealId);
     setMealDetails(fetchedMealDetails);
   };
 
+  // Close the meals overlay and reset related state
   const closeMealOverlay = () => {
     setShowMeals(false);
     setSelectedCategory(null);
     setMealDetails(null);
   };
 
+  // Menu component render
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>MENU</h1>
+
+      {/* Categories list */}
       <ul className={styles.categoryList}>
         {categories.map((category, index) => (
           <div
@@ -78,6 +98,7 @@ const Menu = () => {
               className={styles.categoryItem}
               onClick={() => handleCategoryClick(category.category)}
             >
+              {/* Category image and name */}
               <img
                 src={category.image}
                 alt={category.category}
@@ -89,16 +110,19 @@ const Menu = () => {
         ))}
       </ul>
 
-      {/* Overlay */}
+      {/* Meals overlay - appears when a category is selected */}
       {showMeals && (
         <div className={styles.overlay}>
+          {/* Close button for the overlay */}
           <button className={styles.closeButton} onClick={closeMealOverlay}>
             ❌
           </button>
 
-          {/* Show meal details if a meal is selected */}
+          {/* Conditional rendering: Meal details OR meals list */}
           {mealDetails ? (
+            // Detailed meal view
             <div className={styles.mealDetails}>
+              {/* Back button to return to meals list */}
               <button
                 className={styles.backToMeals}
                 onClick={() => setMealDetails(null)}
@@ -107,6 +131,7 @@ const Menu = () => {
                 ↩
               </button>
 
+              {/* Meal details content */}
               <h2 className={styles.mealTitle}>{mealDetails.strMeal}</h2>
               <img
                 src={mealDetails.strMealThumb}
@@ -115,10 +140,12 @@ const Menu = () => {
               />
               <h4>Ingredients:</h4>
               <ul className={styles.ingredientsList}>
+                {/* Render first 6 ingredients */}
                 {[...Array(20)].map((_, i) => {
                   const ingredient = mealDetails[`strIngredient${i + 1}`];
                   const measure = mealDetails[`strMeasure${i + 1}`];
 
+                  // Clean up ingredient/measurement strings
                   const cleanIngredient = ingredient
                     ?.replace(/^[0-9]*\.?\s*/g, '')
                     .trim();
@@ -126,6 +153,7 @@ const Menu = () => {
                     ?.replace(/^[0-9]*\.?\s*/g, '')
                     .trim();
 
+                  // Only render if ingredient exists and we've shown less than 6
                   if (i < 6 && ingredient) {
                     return (
                       <li key={`${i}-${cleanIngredient}`}>
@@ -138,6 +166,7 @@ const Menu = () => {
               </ul>
             </div>
           ) : (
+            // Meals list view
             <div className={styles.mealsSection}>
               <h2 className={styles.sectionTitle}>{selectedCategory} Meals</h2>
               <ul className={styles.mealsList}>
