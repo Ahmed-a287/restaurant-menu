@@ -1,8 +1,8 @@
 'use client';
 import { useEffect, useState } from 'react';
-import Menu from '../../components/menu';
-import Navbar from '../../components/navbar';
-import Footer from '../../components/footer';
+import Menu from '../../Components/Menu';
+import Navbar from '../../Components/Navbar';
+import Footer from '../../Components/Footer';
 
 export default function Home() {
   const [loading, setLoading] = useState(true);

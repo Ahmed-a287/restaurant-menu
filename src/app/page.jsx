@@ -1,6 +1,6 @@
-import Home from '../components/homepage';
-import Navbar from '../components/navbar';
-import Footer from '../components/footer';
+import Home from '../Components/Home';
+import Navbar from '../Components/Navbar';
+import Footer from '../Components/Footer';
 
 const Index = () => {
   return (

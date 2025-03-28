@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import styles from '../style/Menu.module.scss';
+import styles from '../styles/menu.module.scss';
 
 const Menu = () => {
   const [categories, setCategories] = useState([]);
