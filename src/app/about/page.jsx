@@ -1,7 +1,7 @@
 import styles from '../../styles/about.module.scss';
 import Image from 'next/image';
-import Navbar from '../../Components/Navbar';
-import Footer from '../../Components/Footer';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 import {
   FaPhoneAlt,
   FaEnvelope,
