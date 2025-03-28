@@ -29,7 +29,12 @@ const Navbar = () => {
       </div>
 
       {/* Burger Icon */}
-      <div className={styles.burger} onClick={toggleMenu}>
+      <div
+        className={styles.burger}
+        onClick={toggleMenu}
+        role="button"
+        aria-label="Toggle menu"
+      >
         <div className={styles.burgerLine}></div>
         <div className={styles.burgerLine}></div>
         <div className={styles.burgerLine}></div>
@@ -38,6 +43,8 @@ const Navbar = () => {
       {/* Overlay Menu */}
       <div
         className={`${styles.overlay} ${menuOpen ? styles.showOverlay : ''}`}
+        role="navigation"
+        data-testid="menu-overlay"
       >
         <ul className={styles.navLinks}>
           <li>
