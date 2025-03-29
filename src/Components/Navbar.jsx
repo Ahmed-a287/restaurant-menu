@@ -18,7 +18,13 @@ const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.logoContainer}>
-        <Image src="/logoo.png" alt="Logo" width={100} height={100} priority />
+        <Image
+          src="/media/logoo.png"
+          alt="Logo"
+          width={99}
+          height={100}
+          priority
+        />
       </div>
 
       <div className={styles.titleContainer}>

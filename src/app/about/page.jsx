@@ -30,10 +30,10 @@ const AboutPage = () => {
           {/* Bildsektion */}
           <div className={styles.imageContainer}>
             <Image
-              src="/aboutres.jpg"
+              src="/media/aboutres.jpg"
               alt="Restaurant Interior"
               fill
-              sizes="(max-width: 768px) 100vw, 100vw"
+              sizes="(max-width: 767px) 100vw, 100vw"
               priority
               className={styles.image}
             />
