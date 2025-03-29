@@ -3,4 +3,6 @@ module.exports = {
   images: {
     unoptimized: true,
   },
+  assetPrefix: './',
+  trailingSlash: true,
 };
