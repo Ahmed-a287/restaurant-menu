@@ -19,7 +19,7 @@ const Navbar = () => {
     <nav className={styles.navbar}>
       <div className={styles.logoContainer}>
         <Image
-          src="/media/logoo.png"
+          src="/restaurant-menu/media/logoo.png"
           alt="Logo"
           width={99}
           height={100}
