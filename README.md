@@ -1,4 +1,3 @@
-//
 Restaurant Menu App
 
 Description
