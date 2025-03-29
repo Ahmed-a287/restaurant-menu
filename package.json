@@ -10,7 +10,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "deploy": "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",
+    "deploy": "GITHUB_PAGES=true next build && gh-pages -d out -r https://$GH_TOKEN@github.com/Ahmed-a287/restaurant-menu.git",
     "predeploy": "npm run build"
   },
   "dependencies": {
