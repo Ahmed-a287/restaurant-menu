@@ -26,6 +26,7 @@ describe('Navbar Component', () => {
   });
 
   describe('Static Elements', () => {
+    // Test 1: Checkening for diffrent Navbar items
     it('renders logo, title and subtitle', () => {
       expect(screen.getByAltText('Logo')).toBeInTheDocument();
       expect(screen.getByText('Flavor Haven')).toBeInTheDocument();
@@ -34,6 +35,7 @@ describe('Navbar Component', () => {
   });
 
   describe('Burger menu overly', () => {
+    // Test 2: Testing if menu overly oppening after click
     it('opens menu when burger is clicked', () => {
       const burger = screen.getByRole('button', { name: /menu/i });
       fireEvent.click(burger);
@@ -43,6 +45,7 @@ describe('Navbar Component', () => {
       expect(overlay).toHaveClass('showOverlay');
     });
 
+    //Test 3: Burger menu overlay
     it('closes menu automatically after 5 seconds', () => {
       const burger = screen.getByRole('button', { name: /menu/i });
       fireEvent.click(burger);

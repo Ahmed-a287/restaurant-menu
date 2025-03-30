@@ -153,7 +153,7 @@ const Menu = () => {
                     ?.replace(/^[0-9]*\.?\s*/g, '')
                     .trim();
 
-                  // Only render if ingredient exists and we've shown less than 6
+                  // Only render if ingredient exists and display less than 6
                   if (i < 6 && ingredient) {
                     return (
                       <li key={`${i}-${cleanIngredient}`}>

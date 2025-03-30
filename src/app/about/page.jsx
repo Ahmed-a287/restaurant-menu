@@ -69,9 +69,7 @@ const AboutPage = () => {
           {/* Email Card */}
           <div className={styles.card}>
             <FaEnvelope size={24} className={styles.icon} />
-            <p>
-              For reservations and other queries, email us at: info@info.com
-            </p>
+            <p>E-mail us at: info@info.com</p>
           </div>
           {/* Social Media Card */}
           <div className={styles.card}>
@@ -80,10 +78,7 @@ const AboutPage = () => {
               <FaInstagram size={24} className={styles.icon} />
               <FaTwitter size={24} className={styles.icon} />
             </div>
-            <p>
-              For reservations and other queries, contact us on social media:
-              @flavor.h
-            </p>
+            <p>Connect with us on social media: @flavor.h</p>
           </div>
         </div>
       </div>

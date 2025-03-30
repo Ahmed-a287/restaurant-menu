@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setMenuOpen(true);
-    // Set timeout to close the menu after 10 seconds
+    // Set timeout to close the menu after X seconds
     setTimeout(() => {
       setMenuOpen(false);
     }, 5000);

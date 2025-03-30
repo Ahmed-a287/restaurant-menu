@@ -3,14 +3,14 @@ import { render, screen } from '@testing-library/react';
 import Footer from '../../Components/Footer';
 
 describe('Footer Component', () => {
-  // Renders without crashing
+  // Test 1: Renders without crashing
   it('renders without errors', () => {
     render(<Footer />);
     const footerElement = screen.getByRole('contentinfo');
     expect(footerElement).toBeInTheDocument();
   });
 
-  // Displays the correct copyright text with current year
+  // Test 2: Displays the correct copyright text with current year
   it('displays the correct copyright text', () => {
     render(<Footer />);
     const currentYear = new Date().getFullYear();
@@ -20,7 +20,7 @@ describe('Footer Component', () => {
     expect(copyrightText).toBeInTheDocument();
   });
 
-  // Has the correct CSS class
+  // Test 3: Has the correct CSS class
   it('has the correct CSS class', () => {
     render(<Footer />);
     const footerElement = screen.getByRole('contentinfo');

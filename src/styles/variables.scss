@@ -1,11 +1,21 @@
+//Fonts
+$font-size-base: 1rem;
+$font-size-large: 2rem;
+$font-family: initial;
+$font-style: italic;
+$title-font-size: 1.4rem;
+$subtitle-font-size: 0.8rem;
+$font-size-default: 16px;
+$font-size-medium: 1.8rem;
+$font-size-large: 3.2rem;
+$font-size-huge: 4.5rem;
+$font-size-small: 1.3rem;
+
 // About variables
 $about-primary-color: white;
 $secondary-color: rgba(255, 255, 255, 0.242);
 $highlight-color: #ffcc00;
 $box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-$font-size-base: 1rem;
-$font-size-large: 2rem;
-
 
 //Navbar variables
 $navbar-bg: #000000;
@@ -14,14 +24,10 @@ $highlight-color: rgb(223, 191, 131);
 $burger-hover-bg: rgb(134, 56, 0);
 $overlay-bg: rgba(4, 4, 4, 0.477);
 $overlay-border: aliceblue;
-$font-family: initial;
-$font-style: italic;
-$title-font-size: 2.1rem;
-$subtitle-font-size: 1.2rem;
-$burger-line-width: 40px;
-$burger-line-height: 6px;
+$burger-line-width: 30px;
+$burger-line-height: 3px;
 $burger-gap: 5px;
-$overlay-gap: 30px;
+$overlay-gap: 20px;
 
 // Menu variables
 $font-family: 'Arial', sans-serif;
@@ -34,64 +40,58 @@ $fade-in-duration: 0.6s;
 $transition-speed: 0.3s;
 $grid-gap: 50px;
 $button-hover-scale: 1.3;
-$meal-img-width: 120px;
-$meal-img-height: 100px;
-$category-item-width: 350px;
-$category-item-height: 130px;
-$meal-item-padding: 10px;
-$meal-item-border-radius: 5px;
-/////
-$font-size-default: 16px;
-$font-size-medium: 1.8rem;
-$font-size-large: 3.2rem;
-$font-size-huge: 4.5rem;
-$font-size-small: 1.3rem;
 
+//Category
+$category-item-width: 10em;
+$category-item-height: 2.8em;
+$category-image-height:2.5em;
+$category-image-width:3.8em;
+//Meal
+$meal-img-width: 6em;
+$meal-img-height: 100px;
+$meal-item-padding: 10px;
+$meal-item-border-radius: 0.4em;
+$meal-item-height:3.8em;
+$meal-item-width:65em;
+//
 $padding-default: 15px;
 $padding-small: 5px;
 $padding-medium: 10px;
-
 $gap-default: 60px;
-$gap-small: 15px;
-$gap-medium: 35px;
-$gap-large: 70px;
-
+$gap-small: 1em;
+$gap-medium: 3em;
+$gap-large: 7em;
 $border-style: groove;
 $border-color: black;
-
+//
 $width-default: 90%;
 $width-medium: 95%;
 $height-medium: 180px;
-
 $container-height-ipad: 90vh;
 $container-height-iphone: 87vh;
 
-
 // Home variables
-$container-height-large: 82vh;
+$container-height-large: 87vh;
 $container-height-medium: 90vh;
-$container-height-small: 86vh;
-
+$container-height-small: 88vh;
 $hero-image-width-large: 30%;
-$hero-image-width-medium: 35%;
-$hero-image-width-small: 40%;
-
-$hero-image-max-width: 600px;
+$hero-image-width-medium: 20%;
+$hero-image-width-small: 20%;
+$hero-image-max-width: 23em;
 $hero-image-bottom-large: 10%;
-$hero-image-bottom-medium: 15%;
+$hero-image-bottom-medium: 13%;
 $hero-image-right-large: 5%;
-$hero-image-right-medium: 5%;
+$hero-image-right-medium: 8%;
 $hero-image-top-medium: 20%;
 $hero-image-top-small: 15%;
-
-$hero-bg-overlay: rgba(0, 0, 0, 0.6);
+$hero-bg-overlay: rgba(0, 0, 0, 0.4);
 $hero-bg-overlay-dark: rgba(0, 0, 0, 0.8);
 $hero-bg-image: url('../../public/cloudTwo.jpg');
 $hero-bg-size: cover;
 $hero-bg-position: center;
-
-$vision-text-width: 53%;
-$vision-text-top-large: 55%;
+//
+$vision-text-width: 55%;
+$vision-text-top-large: 56%;
 $vision-text-top-medium: 65%;
-$vision-text-font-size: 1.8rem;
+$vision-text-font-size: 1.1rem;
 $vision-text-color: white;

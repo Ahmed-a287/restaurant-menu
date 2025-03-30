@@ -48,47 +48,49 @@
   width: $vision-text-width;
   left: 5%;
   top: $vision-text-top-large;
-  line-height: 1.5;
+  line-height: 1.6;
   transform: translateY(-50%);
   font-size: $vision-text-font-size;
-  color: $vision-text-color;
+  color: $primary-color;
   z-index: 10;  
 }
 
-@media (max-width: 2000px) {
-  .heroImage {
-    width: $hero-image-width-medium;
-    max-width: $hero-image-max-width;
-    bottom: $hero-image-bottom-medium;
-    right: $hero-image-right-medium;
-  }
-}
-
-@media (max-width: 1240px) {
+//Media Query iPad Air
+@media (max-width: 1280px) {
   .container {
-    height: $container-height-medium;
+    height: 89vh;
   }
 
   .heroImage {
-    width: $hero-image-width-medium;
+    max-width: 360px;
     width: 50%;
-    top: $hero-image-top-medium;
-    right: 25%;
-    top: 10%;
+    right: 14em;
+    top: 5em;
   }
 
   .visionText {
     display: flex;
     flex-direction: column;
     text-align: center;
-    top: 70%;
-    font-size: 2.5rem;
+    width: 36em;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 42em;
     padding: 14px;
-    width: 90%;
+    
+    h2 {
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
   }
 }
 
-@media (max-width: 880px) {
+//Media Query iPhone 14 pro
+@media (max-width: 580px) {
   .container {
     height: $container-height-small;
   }
@@ -105,6 +107,7 @@
     margin: auto;
     left: 0;
     right: 0;
+    top: 33em;
     
     h2 {
       font-size: 2rem;

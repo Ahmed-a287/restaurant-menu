@@ -7,13 +7,13 @@ describe('Home Component', () => {
     render(<Home />);
   });
 
-  // Component Structure
+  // Test1: Component Structure
   it('has correct CSS classes applied', () => {
     const container = screen.getByTestId('home-container');
     expect(container).toHaveClass('container');
   });
 
-  // Header content
+  // Test2: Header content
   it('renders "Our Vision" heading ', () => {
     const heading = screen.getByRole('heading', {
       level: 2, //(h2)
@@ -22,7 +22,7 @@ describe('Home Component', () => {
     expect(heading).toBeInTheDocument();
   });
 
-  // Paragraph content
+  // Test 3 : Paragraph content
   it('displays the vision paragraph with key phrases', () => {
     const paragraph = screen.getByText(/At Flavor Haven/i);
     expect(paragraph).toBeInTheDocument();
@@ -31,7 +31,7 @@ describe('Home Component', () => {
     expect(paragraph).toHaveTextContent('food is more than just a meal');
   });
 
-  //Hero Image
+  //Test 4: Hero Image
   it('renders the hero image with correct attributes', () => {
     const image = screen.getByAltText('Hero Image');
     expect(image).toBeInTheDocument();
