@@ -24,7 +24,7 @@ const Home = () => {
           src={heroImg}
           alt="Hero Image"
           style={{
-            width: '1200px',
+            width: '450px',
             height: 'auto',
           }}
           className={styles.heroImage}

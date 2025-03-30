@@ -10,11 +10,10 @@
 
 // Title
 .title {
-  padding-top: 80px;
+  padding-top: 1rem;
   font-family: initial;
   font-style: italic;
-  font-size: 3rem;
-  height: 140px;
+  font-size: 2.5rem;
   color: $primary-color;
   display: flex;
   justify-content: center;
@@ -23,7 +22,7 @@
 
 // Category List
 .categoryList {
-  margin-top: 4%;
+  margin-top: 1em;
   list-style: none;
   padding: 50px;
   border-radius: 10px;
@@ -53,13 +52,20 @@
     background: $primary-color;
     color: black;
   }
+
+  span{
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
 }
 
 .categoryImage {
-  width: 120px;
-  height: 100px;
-  margin-right: 10px;
-  border-radius: 8px;
+  width: $category-image-width;
+  height: $category-image-height;
+  margin-right: 0.5em;
+  border-radius: 0.4em;
+  border-style: groove;
+  border-color: black;
 }
 
 // Overlay
@@ -77,10 +83,9 @@
 
   .mealsSection {
     margin: auto;
-    padding: 25px;
     border-radius: 10px;
-    max-width: 90%;
-    height: 90%;
+    max-width: 40em;
+    height: 19em;
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)),
                 url('../../public/cloudTwo.jpg');
     cursor: pointer;
@@ -91,33 +96,31 @@
   }
 
   .sectionTitle {
-    margin-top: 3%;
+    margin-top: 2%;
     text-align: center;
-    margin-bottom: 15px;
     color: $primary-color;
+    font-size: 2.3rem;
   }
 
   .mealsList {
-    margin-top: 5%;
+    margin-top: 1.4em;
     display: flex;
     flex-wrap: wrap;
-    gap: 25px;
+    gap: 1em;
     justify-content: center;
+    padding: 1%;
   }
 
   .mealItem {
-    margin-top: 15px;
     cursor: pointer;
     padding: $meal-item-padding;
     border: 1px solid $border-color;
     border-radius: $meal-item-border-radius;
     background-color: $background-color;
     color: $primary-color;
-    font-size: 20px;
     display: grid;
-    grid-template-columns: repeat(3, minmax(180px, 2fr));
-    gap: $grid-gap;
-
+    max-width: $meal-item-width;
+    height: $meal-item-height;
     &:hover {
       transform: scale(1.2);
       background: $primary-color;
@@ -128,16 +131,16 @@
   .mealImage {
     width: $meal-img-width;
     height: $meal-img-height;
-    margin-right: 10px;
-    border-radius: 10px;
-    border-color: rgb(255, 255, 255);
+    margin-right: .5em;
+    border-radius: 0.4em;
+    border-color: black;
     border-style: groove;
   }
 
   .mealItem span {
     grid-column: 2 / 4;
-    font-size: 2rem;
-    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
     margin: auto;
   }
 
@@ -147,7 +150,7 @@
     right: 7%;
     background: transparent;
     border: none;
-    font-size: 2.5rem;
+    font-size: 1.6rem;
     cursor: pointer;
 
     &:hover {
@@ -157,81 +160,49 @@
 
   // Meal Details
   .mealDetails {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8)),
                 url('../../public/cloudTwo.jpg');
-    padding: 25px;
-    border-radius: 10px;
-    max-width: 95%;
+    border-radius: .4em;
     border: 1px solid $border-color;
     height: 90%;
     text-align: center;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     animation: fadeIn $fade-in-duration ease-in-out;
     position: relative;
-    color: white;
+    color:$primary-color;
     min-width: 90%;
 
     h2 {
-      margin-top: 2%;
-      font-size: 3rem;
-      margin-bottom: 15px;
+      margin-top: 1em;
+      font-size: 1.7rem;
+      margin-bottom: .5em;
     }
 
     h4 {
-      font-size: 1.9rem;
-      line-height: 2.1rem;
-      margin-bottom: 4px;
+      font-size: 1.2rem;
       text-decoration: underline;
     }
 
     li {
       padding: 4px;
-      font-size: 1.5rem;
+      font-size: 1rem;
     }
 
     img {
-      width: 100%;
-      max-width: 50%;
-      width: 390px;
-      border-radius: 8px;
-      margin: 10px 0;
+      width: 18em;
+      border-radius: .4em;
+      margin: 1em ;
     }
-  }
-
-  .mealTitle {
-    margin-bottom: 15px;
-  }
-
-  .mealDetailImage {
-    width: 200px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-  }
-
-  .ingredientsTitle {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-
-  .ingredientsList {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 15px;
-    font-size: 20px;
-  }
-
-  .ingredientItem {
-    margin-bottom: 5px;
   }
 
   .backToMeals {
     position: absolute;
-    right: 2%;
+    top: .2em;
+    right: .7em;
     background:transparent;
     display: inline-block;
     border-style: none;
-    font-size: 3.3rem;
+    font-size: 2.5rem;
     transition: transform 0.2s ease;
     color: red;
     cursor: pointer;
@@ -256,225 +227,173 @@
 
 
 
-
-/////////////////////// Media query /////////////////////
-
 // Media Query for iPad Air
-@media (max-width: 1240px) {
-  .container {
-    height: $container-height-ipad;
-    padding: $padding-default;
-    font-size: $font-size-default;
-    background-size: cover;
-  }
-
-  .title {
-    font-size: $font-size-huge;
-    padding-top: 60px;
-    height: auto;
-  }
-
-  .categoryList {
-    grid-template-columns: repeat(2, 1fr);
-    gap: $gap-large;
-  }
-  
-  .categoryItem {
-    padding: $padding-default;
-    width: 500px;
-    height: $height-medium;
-    font-size: $font-size-large;
-  }
-
-  .categoryImage {
-    margin-right: 10px;
-    width: 180px;
-    height: 160px;
-    border-style: $border-style;
-    border-color: $border-color;
-  }
-
-  .categoryItem:hover {
-    transform: scale(1.3);
-  }
-  
-  .overlay {
-    .sectionTitle {
-      font-size: $font-size-large;
-    }
-
-    .mealsList {
-      gap: $gap-medium;
-    }
-
-    .mealItem {
-      justify-items: start;
-      gap: 0px;
-      width: $width-medium;
-      grid-template-columns: repeat(3, auto);
-    }
-
-    .mealImage {
-      width: 220px;
-      height: 140px;
-      margin-right: 0;
-      border-style: $border-style;
-      border-color: $border-color;
-    }
-
-    .mealItem span {
-      grid-column: 2 / 3;
-      font-size: 2.3rem;
-      font-weight: bold;
-    }
-
-    .mealItem:hover {
-      transform: scale(1.0);
-      background: rgb(223, 191, 131);
-      color: black;
-    }
-  
-    .closeButton {
-      top: 6%;
-      font-size: $font-size-large;
-    }
-
-    .mealDetails {
-      width: $width-default;
-
-      h2 {
-        margin-top: 10%;
-        font-size: 4rem;
-        margin-bottom: 25px;
-      }
-
-      img {
-        width: 100%;
-        max-width: 50%;
-        border-radius: 8px;
-        margin: 10px 0;
-      }
-
-      h4 {
-        margin-top: 40px;
-        margin-bottom: 25px;
-        font-size: 3rem;
-        text-decoration: underline;
-      }
-
-      li {
-        padding: 10px;
-        font-size: 2.5rem;
-      }
-
-      .backToMeals {
-        right: 2%;
-        top: 1%; 
-        font-size: $font-size-large;
-      }
-    }
-  }
-}
-
-// Media Query for iPhone 14 Pro
-@media (max-width: 880px) {
+@media (max-width: 1280px) {
   .container {
     padding: $padding-small;
     height: $container-height-iphone;
-    display: grid;
+    height: 89vh;
   }
 
   .title {
-    padding-top: 15px;
-    font-size: $font-size-medium;
+    padding-top: 0.7em;
+    font-size: 2.5rem;
   }
 
   .categoryList {
-    margin-top: 0;
+    margin-top: 2em;
     padding: $padding-default;
-    gap: $gap-small;
+    gap: $gap-medium;
+    grid-template-columns: repeat(2, minmax(140px, 2fr));
   }
 
   .categoryItem {
-    width: 187px;
-    height: 85px;
-    padding: 4px;
+    width: 15em;
+    height: 6em;
     font-size: $font-size-small;
     font-weight: bold;
   }
 
   .categoryImage {
-    width: 70px;
-    height: 70px;
-    margin-right: 5px;
-    border-radius: 8px;
+    width:$meal-img-width;
+    height: $meal-img-height;
+    margin-right: 1em;
+    border-radius: 0.5em;
     border-style: $border-style;
     border-color: $border-color;
   }
 
-  .overlay {
-    .sectionTitle {
-      font-size: $font-size-small;
+  .categoryList > .mealContainer:last-child .categoryItem {
+   margin-left: 19em;
+  }
+
+  
+// Overlay
+.overlay {
+  .mealsSection {
+    margin: auto;
+    border-radius: 0.4em;
+    height: 90vh;
+    width: 90%;
+  }
+  
+  .mealItem span {
+    font-size: 1.2rem;
+  }
+
+  .closeButton {
+    top: 6.3%;
+    right: 8%;
+  }
+
+  // Meal Details
+  .mealDetails {
+    
+    h2 {
+      margin-top: 0.5em;
+      font-size: 2.3rem;
     }
 
-    .mealsList {
-      gap: $gap-small;
+    h4 {
+      margin-top: 1em;
+      font-size: 1.6rem;
+      margin-bottom: 0.5em;
+    }
+
+    li {
+      font-weight: bold;
+      padding: 4px;
+      font-size: 1.4rem;
+    }
+  }
+}
+}
+
+
+// Media Query for iPhone 14 Pro
+@media (max-width: 580px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .categoryList {
+    margin-top: 2em;
+    padding: 0;
+    gap: 0.7em;
+  }
+
+  .categoryItem {
+    width: 9.5em;
+    height: 4em;
+    padding: 4px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-size: $font-size-small;
+    font-weight: bold;
+  }
+
+  .categoryImage {
+    width: 3.2em;
+    height: 3.2em;
+    margin-right: 0.2em;
+    border-radius: 0.4em;
+  }
+  .categoryList > .mealContainer:last-child .categoryItem {
+    margin-left: 10em;
+    width: 9.8em;
+   }
+  .overlay {
+    .sectionTitle {
+      margin-top: 0.5em;
+      font-size: 1.7rem;
     }
 
     .mealItem {
       justify-items: start;
-      display: grid;
-      grid-template-columns: repeat(3, auto); 
-      gap: 20px;
       width: $width-medium;
+      height:auto;
     }
 
     .mealImage {
-      width: 80px;
-      height: 60px;
-      margin-right: 0;
-      border-style: $border-style;
-      border-color: $border-color;
+      width: 3em;
+      height: 2.1em;
     }
 
     .mealItem span {
-      grid-column: 2 / 3;
+      margin-left: 0em;
       font-size: $font-size-small;
     }
 
     .closeButton {
-      top: 6%;
-      font-size: $font-size-medium;
+      top: 2.8em;
+      right: 1.6em;
+      font-size: 1.3rem;
     }
 
     .mealDetails {
       width: $width-default;
 
       h2 {
-        margin-top: 10%;
-        font-size: 2rem;
-        margin-bottom: 25px;
+        margin-top: 1em;
+        font-size: 1.7rem;
+        margin-bottom: 1em;
       }
 
       img {
-        width: 100%;
         max-width: 50%;
-        border-radius: 8px;
-        margin: 10px 0;
       }
 
       h4 {
-        font-size: 1.8rem;
-      }
-
-      li {
-        padding: 10px;
         font-size: 1.5rem;
       }
 
+      li {
+        font-size: 1.3rem;
+      }
+
       .backToMeals {
-        right: 2%;
-        top: 1%;
+        right: 0.5em;
+        top: 0.2em;
         font-size: $font-size-medium;
       }
     }
