@@ -1,9 +1,9 @@
 @use 'variables.scss' as *;
 
 .container {
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8)),
-    url('../../public/cloudTwo.jpg');
+  background: linear-gradient($hero-bg-overlay, $hero-bg-overlay-dark), $hero-bg-image;
   color: $about-primary-color;
+  background-size: $hero-bg-size;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -112,72 +112,80 @@
 @media (max-width: 1280px) {
   .container {
     .hero {
-      margin: 2rem auto;
+      margin: 0 auto;
       //padding: 2rem;
       text-align: center;
-      max-width: 80%;
-
-      .heroContent {
-        max-width: 100%;
-        font-size: $font-size-large;
-      }
-
+      max-width: 90%;
       .subtitle {
-        font-size: 2rem;
+        font-size: $title-font-size;
       }
     }
 
     .content {
       padding: 2rem;
-
+      height: 35em;
+      width: 51.5em;
       .grid {
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
+        //width: 50.5em;
+        max-height: 39em;
       }
 
       .imageContainer{
-        margin: 0 auto;
-        height: 580px;
-        max-width: 1000px;
+        margin: 1em auto;
+        height: 25em;
+        max-height:15em ;
+        max-width: 38.5em;
       }
 
       .image{
-        object-fit:fill;
+        width: 45em;
+        //height: 20%;
+        //object-fit:cover;
       }
 
       .textSection {
         text-align: center;
+        max-width: 90%;
+        margin: auto;
         h2 {
-          font-size: 2rem;
+          font-size: 1.7rem;
         }
         p{
-          font-size: 1.7rem;
+          font-size: 1.2rem;
         }
       }
     }
 
     .values {
+      margin-top: 1em;
       h2 {
-        font-size: 2rem;
+        margin-top: 0.5em;
+        font-size: 1.7rem;
       }
 
       .cards {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 2rem; /* Adjust spacing between cards */
+        gap: 2em; /* Adjust spacing between cards */
 
         .card {
           width: calc(45% - 1rem); /* Two cards take up 50% each on the top row */
-          max-width: 400px; /* Limit card size */
+          max-width: 25em; 
+          max-height: 9em;
+          padding: 0.5em;
         }
 
         .card:last-child {
           width: 100%; /* Bottom card spans the full width */
-          max-width: 500px;
-          height: 8vh;
-          margin-top: 1rem; /* Add spacing between rows */
+          padding-left: 2em;
+          padding-right: 2em;
+          max-width: 20em;
+          height: 5em;
+          //margin-top: 1rem; /* Add spacing between rows */
           align-self: center; /* Ensure it is centered under the top two */
         }
       }
@@ -185,38 +193,42 @@
   }
 }
 
-
-@media (max-width: 860px) {
+//Media query iPhone 14 pro
+@media (max-width: 580px) {
   .container {
-
     .hero {
-      display: none;
+      .subtitle {
+        font-size: 0.8rem;
+      }
     }
 
     .content {
-      padding: 2rem;
-      margin-top: 2rem ;
+      margin-top: 0;
+      padding: 1em;
+      height: 25em;
+      width: 26.9em;
       .grid {
         display: flex;
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: 1em;
+        //width: 50.5em;
+        max-height: 29em;
       }
 
       .imageContainer{
-        margin: 0 auto 0;
-        height: 150px;
-        max-width: 330px;
+        margin: 0.2em auto;
+        height: 15em;
+        max-height:12em ;
+        max-width: 20.5em;
       }
 
       .image{
-        object-fit:fill;
+        width: 15em;
       }
 
       .textSection {
-        padding: 13px;
-        text-align: center;
         h2 {
-          font-size: 1rem;
+          font-size: 1.2rem;
         }
         p{
           font-size: 0.8rem;
@@ -225,47 +237,34 @@
     }
 
     .values {
-      width: 100%; 
-      max-width: 100%; 
-      margin: 0 auto;
-
+      padding: 0;
       h2 {
-        font-size: 1rem;
-        text-align: center;
-        margin-bottom: 1rem;
+        margin-bottom: 1em;
+        font-size: 1.2rem;
       }
 
       .cards {
         display: flex;
         flex-wrap: wrap;
-        margin: auto auto;
-        //justify-content: space-between;
-        position: fixed;
-        left: 15px;
-        gap: 1rem;
-        width: 400px;
-        
-        .card {
-          height: 130px;
-          width: calc(50% - 0.5rem); 
-          width: 190px;
-        }
+        flex-direction: column;
+        justify-content: center;
+        gap: 2em; /* Adjust spacing between cards */
 
-        .card:last-child {
-          margin-top:0;
-          max-width: 350px; 
-          margin-top: 0rem; 
-          height: 100px;
-          align-self: center; 
-          display:block ;
+        .card {
+         width: 18em;
+         height: 3.7em;
+         margin: 0 auto;
         }
-        p{
-          font-size: 0.7rem;
+        .card.card:last-child{
+          width: 18em;
+          height: 3.6em;
         }
-        .socialIcons{
-          position: fixed;
-          left: 41%;
-          bottom: 13%;
+        .icon {
+          color: $highlight-color;
+        }
+        p {
+          font-size: 0.8rem;
+          line-height: 1.2;
         }
       }
     }
